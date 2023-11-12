@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Registration Page</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+    }
+    .container {
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header text-center">
+            <h3><i class="fas fa-user"></i> Регистрация <i class="fas fa-user"></i></h3>
+          </div>
+          <div class="card-body">
+            <form th:action="@{/registration}" method="post" th:object="${user}">
+              <div class="mb-4">
+                <label for="username" class="form-label"><i class="fas fa-user"></i> Имя пользователя</label>
+                <input type="text" class="form-control" id="username" required th:field="*{username}">
+              </div>
+              <div class="mb-4">
+                <label for="email" class="form-label"><i class="fas fa-envelope"></i> Адрес электронной почты</label>
+                <input type="email" class="form-control" id="email" th:field="*{email}" required>
+              </div>
+              <div class="mb-4">
+                <label for="password" class="form-label"><i class="fas fa-lock"></i> Пароль</label>
+                <input type="password" class="form-control" id="password" th:field="*{password}" required>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Регистрация</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6">
+          <p class="text-center">Есть аккаунт? <a href="#">Вернитесь ко входу :)</a></p>
+        </div>
+      </div>
+  </div>
+
+  <!-- Optional JavaScript; choose one of the two! -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-hWVjflwFxw52Fj0RG3jgkfsx9F3Jcd9iJzxg9L4EowCmVmF7gZGFCdkzEJZ6jGX1" crossorigin="anonymous"></script>
+
+</body>
+</html>

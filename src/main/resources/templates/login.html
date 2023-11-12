@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Login Page</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+    }
+    .container {
+      margin-top: 100px;
+    }
+    .icon {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header text-center">
+            <h3><i class="icon fas fa-sign-in-alt"></i>Вход</h3>
+          </div>
+          <div class="card-body">
+            <form method="post" th:action="@{/login}" >
+              <div class="mb-3">
+                <label for="email" class="form-label"><i class="icon fas fa-envelope"></i>Электронная почта</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label"><i class="icon fas fa-lock"></i>Пароль</label>
+                <input type="password" class="form-control" id="password" name="password"  required>
+              </div>
+              <button type="submit" class="btn btn-primary">Войти</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-6">
+        <p class="text-center">Нету аккаунта <a href="#">Создайте ее!</a></p>
+        <p class="text-center">Забыли пароль? <a href="#">Восстановите ее здесь</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript; choose one of the two! -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-hWVjflwFxw52Fj0RG3jgkfsx9F3Jcd9iJzxg9L4EowCmVmF7gZGFCdkzEJZ6jGX1" crossorigin="anonymous"></script>
+
+</body>
+</html>

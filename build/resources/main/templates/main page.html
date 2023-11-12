@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I-Ta'lim</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<style>
+  .nav-item:hover .nav-link {
+    font-weight: bold;
+  }
+  .overlay-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 10px;
+    }
+
+    .overlay-text p {
+        font-size: 20px;
+        color: black;
+        font-weight: bold;
+    }
+    .overlay-text:hover {
+        color: grey;
+
+    }
+    footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+  }
+</style>
+<script>
+  function navigateToOption(selectElement) {
+      var selectedOption = selectElement.options[selectElement.selectedIndex];
+      var href = selectedOption.getAttribute('data-href');
+
+      if (href) {
+          window.location.href = href;
+      }
+  }
+</script>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-1" th:href="@{/main page}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-browser-edge" viewBox="0 0 16 16">
+            <path d="M9.482 9.341c-.069.062-.17.153-.17.309 0 .162.107.325.3.456.877.613 2.521.54 2.592.538h.002c.667 0 1.32-.18 1.894-.519A3.838 3.838 0 0 0 16 6.819c.018-1.316-.44-2.218-.666-2.664l-.04-.08C13.963 1.487 11.106 0 8 0A8 8 0 0 0 .473 5.29C1.488 4.048 3.183 3.262 5 3.262c2.83 0 5.01 1.885 5.01 4.797h-.004v.002c0 .338-.168.832-.487 1.244l.006-.006a.594.594 0 0 1-.043.041Z"/>
+            <path d="M.01 7.753a8.137 8.137 0 0 0 .753 3.641 8 8 0 0 0 6.495 4.564 5.21 5.21 0 0 1-.785-.377h-.01l-.12-.075a5.45 5.45 0 0 1-1.56-1.463A5.543 5.543 0 0 1 6.81 5.8l.01-.004.025-.012c.208-.098.62-.292 1.167-.285.129.001.257.012.384.033a4.037 4.037 0 0 0-.993-.698l-.01-.005C6.348 4.282 5.199 4.263 5 4.263c-2.44 0-4.824 1.634-4.99 3.49Zm10.263 7.912c.088-.027.177-.054.265-.084-.102.032-.204.06-.307.086l.042-.002Z"/>
+            <path d="M10.228 15.667a5.21 5.21 0 0 0 .303-.086l.082-.025a8.019 8.019 0 0 0 4.162-3.3.25.25 0 0 0-.331-.35c-.215.112-.436.21-.663.294a6.367 6.367 0 0 1-2.243.4c-2.957 0-5.532-2.031-5.532-4.644.002-.135.017-.268.046-.399a4.543 4.543 0 0 0-.46 5.898l.003.005c.315.441.707.821 1.158 1.121h.003l.144.09c.877.55 1.721 1.078 3.328.996Z"/>
+        </svg>
+        I-Ta'lim
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <form class="d-flex" style="width: 70%;">
+          <input class="form-control me-2" type="search" placeholder="Что ищите?" aria-label="Search">
+          <button class="btn btn-outline-primary" type="submit">Поиск</button>
+        </form>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item me-2">
+            <a href="https://t.me/a_khuja" class="btn btn-outline-primary mt-2">+ Новость</a>
+          </li>
+          <li class="nav-item">
+            <a th:href="@{/login}" class="nav-link fw-bold fs-4 ml-300" style="color: black;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+              </svg>
+              Вход
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+    <div class="container-fluid mt-4 ">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar ps-4" style="overflow: hidden;">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column ">
+                        <li class="nav-item ps-5 border-bottom ">
+                            <a class="sub-menu nav-link fs-4 active" style="color: black;" aria-current="page" href="/"> Главная</a>
+                        </li>
+                        <li class="nav-item ps-5 border-bottom">
+                            <button class="nav-link fs-4 btn btn-link" id="expandOrders" style="color: black;">
+                                Разделы
+                            </button>
+                            <div class="collapse" id="ordersCollapse">
+                                  <select class="form-select fs-4" style="color: black; background-color: #f8f9fa; border: none;" onchange="navigateToOption(this)">
+                                      <option value="order1"></option>
+                                      <option value="order2" data-href="/biology">Биология</option>
+                                      <option value="order3" data-href="/medicine">Медицина</option>
+                                      <option value="order4" data-href="/physics">Физика</option>
+                                  </select>
+                            </div>
+                        </li>
+                        <li class="nav-item ps-5 border-bottom">
+                            <a class="nav-link fs-4" style="color: black;" th:href="@{/stats}">Статьи</a>
+                        </li>
+                        <li class="nav-item ps-5 border-bottom">
+                            <a class="nav-link fs-4" style="color: black;" th:href="@{/tags}">Теги</a>
+                        </li>
+                        
+                        <li class="nav-item ps-5 border-bottom" style="padding-top: 100%;">
+                            <a class="nav-link fs-4" style="color: black;" href="https://t.me/a_khuja">Поддержка</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="col">
+                <h1 class="mt-4 ms-5">Последние новости</h1>
+
+                      <div class="row">
+                        <div class="col-6 ms-5 position-relative">
+                            <a th:href="@{/medicine}">
+                                <div class="border rounded-3 p-4">
+                                    <div class="position-relative">
+                                        <img src="../static/images/medicine.jpg" alt="Description of the image" class="img-fluid mb-3 enlarge-image">
+                                        <div class="overlay-text ">
+                                            <a href="medicine.html" class="text-decoration-none overlay-text">
+                                                <p>
+                                                    Перспективы применения терапевтической транскраниальной магнитной стимуляции при диабетической полинейропатии
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-4 ms-2 position-relative">
+                            <a th:href="@{/biology}" class="text-decoration-none">
+                                <div class="border rounded-3 ps-4 pt-3 pe-4 position-relative">
+                                    <img src="../static/images/biology.jpeg" alt="Description of the image" class="img-fluid mb-3">
+                                    <div class="overlay-text position-absolute bottom-0 start-0" style="font-size: 14px;"> <!-- Adjust the font size as needed -->
+                                        <a href="biology.html" class="text-decoration-none">
+                                            <p class="fs-6 ps-3 pb-3">
+                                                ЛЕКАРСТВЕННЫЕ РАСТЕНИЯ
+                                            </p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                
+                  
+            </div>
+        </div>
+    </div>
+    <footer>
+      <p>&copy; 2023 I-Ta'lim. All rights reserved.</p>
+    </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('expandOrders').addEventListener('click', function () {
+      document.getElementById('ordersCollapse').classList.toggle('show');
+    });
+
+    document.getElementById('expandMaterials').addEventListener('click', function () {
+      document.getElementById('materialsCollapse').classList.toggle('show');
+    });
+  </script>
+  
+
+</body>
+
+</html>
+
+
